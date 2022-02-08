@@ -8,8 +8,8 @@ const initialState = {
     product_id: '',
     title: '',
     price: 0,
-    description: '',
-    content: '',
+    description: 'Lorem Ipsum is simply dummy text of the',
+    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry It is a long established fact that a reader will be distracted by the readable content',
     category: '',
     _id: ''
 }
