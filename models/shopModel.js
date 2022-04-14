@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 
-
-const userSchema = new mongoose.Schema({
-    name: {
+const shopSchema = new mongoose.Schema({
+    shopName: {
         type: String,
         required: true,
         trim: true
@@ -16,16 +15,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    address: {
+        type: String,
+        required: true,
+    },
+    products: [{
+        type: Object
+    }],
+    sales: [{
+        type: Object
+    }],
     role: {
         type: Number,
-        default: 0
+        default: 1
     },
-    cart: {
-        type: Array,
-        default: []
-    }
-}, {
-    timestamps: true
 })
 
-module.exports = mongoose.model('Users', userSchema)
+
+module.exports = mongoose.model('Shop',shopSchema)

@@ -18,8 +18,17 @@
 
 Task
 ---------------------- 
-1. Create Login/Signup for backend using jwt
-    1. Separate routes for both login.
-    2. No role assignment
-2. Create Login/Signup page for storeApp and Customer App
-3. Connect Both
+shop login
+user login
+shop listing
+
+
+
+
+
+
+
+Backlog
+---------------------- 
+Update Shop
+Delete Shop Account
