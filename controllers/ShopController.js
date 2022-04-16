@@ -86,14 +86,14 @@ const shopCtrl = {
             const { email , password} = req.body
             const shop = await Shops.findOne({email})
 
-            if(!shop) return res.status(400).json({msg: "Shop does not exist."})
+            if(!shop) return res.status(400).json({msg: "Incorrect credentials."})
 
 
             const isMatch = await bcrypt.compare(password, shop.password)
-            if(!isMatch) return res.status(400).json({msg: "Incorrect password."})
+            if(!isMatch) return res.status(400).json({msg: "Incorrect credentials."})
 
-            const accesstoken = createAccessToken({id: shop._id})
-            const refreshtoken = createRefreshToken({id: shop._id})
+            const accesstoken = token.createAccessToken({id: shop._id})
+            const refreshtoken = token.createRefreshToken({id: shop._id})
 
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
@@ -109,16 +109,40 @@ const shopCtrl = {
     },
     logout: async (req,res)=> {
         try {
-            
+            res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
+            return res.json({msg: "Logged out"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
     },
     refreshToken : async (req,res)=> {
         try {
-            
+            const rf_token = req.cookies.refreshtoken;
+            if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
+
+            jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
+                if(err) return res.status(400).json({msg: "Please Login or Register"})
+
+                const accesstoken = createAccessToken({id: user.id})
+
+                res.json({accesstoken})
+            })
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    shopList : async (req,res) =>{
+        try {
+            const shops = await Shops.find({}).select('shopName')
+            console.log(shops)
+            if(!shops) return res.status(400).json({msg: "No shops exist in your Region."})
+
+            res.status(200).json({msg:shops})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
     }
 }
+
+
+module.exports = shopCtrl 

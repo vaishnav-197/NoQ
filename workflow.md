@@ -30,5 +30,16 @@ shop listing
 
 Backlog
 ---------------------- 
+Test shopController / ShopRouter Api's
 Update Shop
 Delete Shop Account
+
+
+<!-- Shop list -->
+Get list of all shops sowig only shopName remove all other details
+
+
+
+<!-- Shop Dashboard -->
+products - crud
+sales
