@@ -1,7 +1,8 @@
 const Users = require('../models/userModel')
 const Payments = require('../models/paymentModel')
+const token = require('../utilities/tokenGenerator')
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+
 
 const userCtrl = {
     register: async (req, res) =>{
@@ -24,8 +25,8 @@ const userCtrl = {
             await newUser.save()
 
             // Then create jsonwebtoken to authentication
-            const accesstoken = createAccessToken({id: newUser._id})
-            const refreshtoken = createRefreshToken({id: newUser._id})
+            const accesstoken = token.createAccessToken({id: newUser._id})
+            const refreshtoken = token.createRefreshToken({id: newUser._id})
 
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
@@ -127,12 +128,6 @@ const userCtrl = {
  }
 
 
-const createAccessToken = (user) =>{
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '11m'})
-}
-const createRefreshToken = (user) =>{
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
-}
 
 module.exports = userCtrl
 

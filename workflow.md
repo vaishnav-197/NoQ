@@ -18,8 +18,35 @@
 
 Task
 ---------------------- 
-1. Create Login/Signup for backend using jwt
-    1. Separate routes for both login.
-    2. No role assignment
-2. Create Login/Signup page for storeApp and Customer App
-3. Connect Both
+product crud-
+1. post request to update the array - insert object
+    find the shop
+    create product object
+    create barcode 
+    add barcode image string to object
+    addtoset$(product)
+2. put request to update the product - update product
+    find the shop
+    find and delete the product
+    add the new product
+    add barcode image string to object
+    addtoset$(product)
+3. Delete Product
+
+
+
+
+Backlog
+---------------------- 
+Update Shop
+Delete Shop Account
+
+
+<!-- Shop list -->
+Get list of all shops sowig only shopName remove all other details
+
+
+
+<!-- Shop Dashboard -->
+products - crud
+sales

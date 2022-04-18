@@ -5,6 +5,7 @@ const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const path = require('path')
+const req = require('express/lib/request')
 
 
 const app = express()
@@ -21,7 +22,7 @@ app.use('/api', require('./routes/categoryRouter'))
 app.use('/api', require('./routes/upload'))
 app.use('/api', require('./routes/productRouter'))
 app.use('/api', require('./routes/paymentRouter'))
-
+app.use('/api',require('./routes/shopRouter'))
 
 
 // Connect to mongodb
