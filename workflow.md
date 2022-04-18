@@ -18,19 +18,26 @@
 
 Task
 ---------------------- 
-shop login
-user login
-shop listing
-
-
-
+product crud-
+1. post request to update the array - insert object
+    find the shop
+    create product object
+    create barcode 
+    add barcode image string to object
+    addtoset$(product)
+2. put request to update the product - update product
+    find the shop
+    find and delete the product
+    add the new product
+    add barcode image string to object
+    addtoset$(product)
+3. Delete Product
 
 
 
 
 Backlog
 ---------------------- 
-Test shopController / ShopRouter Api's
 Update Shop
 Delete Shop Account
 
