@@ -20,10 +20,12 @@ const productControl = {
 
 
                 await shop.save()
-                
+                return shop
+            }).then( (shop) => {
+                res.status(200).json({msg:shop})
             })
 
-            res.json({img:''})
+        
             
             
 
