@@ -18,6 +18,6 @@ const authAdmin = require('../middleware/authAdmin')
 router.route('/products')
     // .get()
     .post(auth,authAdmin, productController.createProduct)
-
+    .put(auth,authAdmin,productController.updateProduct)
 
 module.exports = router
