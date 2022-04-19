@@ -68,6 +68,29 @@ const productControl = {
             } catch (err) {
                 return res.status(500).json({msg: err.message})
             }
+        },
+    deleteProduct:  async (req,res) => {
+            try {
+                
+                // create product object to update
+                const product = req.body
+                delete product['admin']
+                console.log('1')
+                // find shop
+                const shop = await Shops.findById(req.user.id)
+                if(!shop) return res.status(400).json({msg: 'Shop doesnot exist'})
+                console.log('2')
+                // remove existing product from array
+                shop.products = shop.products.filter( (item) =>{ 
+                    return item.title !== product.title; 
+                  });
+                console.log("3")
+                // save
+                await shop.save()
+                res.status(200).json({msg:shop})
+            } catch (err) {
+                return res.status(500).json({msg: err.message})
+            }
         }
 }
 

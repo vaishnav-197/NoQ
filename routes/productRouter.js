@@ -19,5 +19,6 @@ router.route('/products')
     // .get()
     .post(auth,authAdmin, productController.createProduct)
     .put(auth,authAdmin,productController.updateProduct)
+    .delete(auth,authAdmin,productController.deleteProduct)
 
 module.exports = router
