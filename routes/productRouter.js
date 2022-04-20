@@ -1,8 +1,10 @@
 const router = require('express').Router()
 const productCtrl = require('../controllers/productCtrl')
 const productController = require('../controllers/productController')
+const scanController = require('../controllers/scanController')
 const auth = require('../middleware/auth')
 const authAdmin = require('../middleware/authAdmin')
+const { route } = require('express/lib/application')
 
 
 // router.route('/products')
@@ -21,4 +23,8 @@ router.route('/products')
     .put(auth,authAdmin,productController.updateProduct)
     .delete(auth,authAdmin,productController.deleteProduct)
 
+
+
+router.route('/scan')
+    .post(scanController.findProduct)
 module.exports = router

@@ -1,11 +1,8 @@
 const qr = require('qrcode');
   
-const barcodeGenerator = async() => {
+const barcodeGenerator = async(data) => {
 
-    data = {
-        title:"123",
-        price:"123"
-    }
+    
     let strData = JSON.stringify(data)
   
     qr.toString(strData, {type:'terminal'},
