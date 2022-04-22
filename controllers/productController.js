@@ -1,6 +1,7 @@
 const Shops = require('../models/shopModel')
 const qr = require('qrcode');
-const barcodeGenerator = require('../utilities/barcodeGenerator')
+const barcodeGenerator = require('../utilities/barcodeGenerator');
+const { json } = require('express/lib/response');
 
 
 
@@ -90,7 +91,20 @@ const productControl = {
             } catch (err) {
                 return res.status(500).json({msg: err.message})
             }
+        },
+    getProduct: async(req,res) => {
+        try {
+            const shop = await Shops.findById(req.body.shopID)
+            
+            if(!shop) return res.status(400).json({msg: 'Shop doesnot exist'})
+
+            res.status(200).json({msg:shop.products})
+
+
+        } catch (err) {
+            res.status(200).json({msg:err.message})
         }
+    }
 }
 
 

@@ -18,7 +18,7 @@ const { route } = require('express/lib/application')
 
 
 router.route('/products')
-    // .get()
+    .get(productController.getProduct)
     .post(auth,authAdmin, productController.createProduct)
     .put(auth,authAdmin,productController.updateProduct)
     .delete(auth,authAdmin,productController.deleteProduct)
