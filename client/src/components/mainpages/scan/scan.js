@@ -41,7 +41,7 @@ const [scanResultFile, setScanResultFile] = useState('');
 
             <Grid container spacing={2}>
                      
-                      {/* <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
+                      <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
                         <Button className={classes.btn} variant="contained" color="secondary" onClick={onScanFile}>Upload Qr Code</Button>
                         <QrReader
                           ref={qrRef}
@@ -55,7 +55,7 @@ const [scanResultFile, setScanResultFile] = useState('');
                         { scanResultFile ? (<Link to={`/detail/${scanResultFile}`}>
                     Scan success! Click here to goto product page
                     </Link>) : null}
-                      </Grid> */}
+                      </Grid>
                       <Grid item xl={4} lg={4} md={6} sm={12} xs={12} style={{margin: 'auto'}}>
                          <QrReader
                          facingMode={"environment"}

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {Switch, Route} from 'react-router-dom'
+import Shops from './shop/Shops'
 import Products from './products/Products'
 import DetailProduct from './detailProduct/DetailProduct'
 import Login from './auth/Login'
@@ -28,6 +29,8 @@ function Pages() {
 
             <Route path="/login" exact component={isLogged ? NotFound : Login} />
             <Route path="/register" exact component={isLogged ? NotFound : Register} />
+
+            <Route path="/shop" exact component={isLogged ?Shops : Login} />
 
             <Route path="/category" exact component={isAdmin ? Categories : NotFound} />
             <Route path="/create_product" exact component={isAdmin ? CreateProduct : NotFound} />
